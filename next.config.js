@@ -7,8 +7,7 @@ const nextConfig = {
     env: {
         pathUrl: `https://hyggemedicalservice.com/phpapi/api`,
 
-      
-        // HyggeOAliff: '2003391401-jDvm8MlZ', 
+
         
         // test //
         vhratchaburiliff: '2003826482-JZxe4b0A',
