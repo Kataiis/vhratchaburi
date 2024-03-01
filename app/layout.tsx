@@ -3,11 +3,9 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { Kanit } from "next/font/google";
-import Navbar from './profile2/[cid]/[lineid]/components/Navbar';
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from 'react';
-import Agreement from './profile2/[cid]/[lineid]/agreement/page';
-import ProfilePage from './profile2/[cid]/[lineid]/page';
+
 
 
 const inter: any = Kanit({

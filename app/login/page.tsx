@@ -23,6 +23,7 @@ import liff from "@line/liff"
 import { usePatientStore } from "../store";
 import dayjs from "dayjs";
 
+import logo from '@/public/Logo.png'
 
 
 const Login = () => {
@@ -61,7 +62,7 @@ const Login = () => {
         const dataservice = {
             cid: Patient.cid,
             lineid: lineid,
-            hospcode: 10677,
+            hospcode: 10678,
         }
 
         console.log("dataIns", dataIns)
@@ -75,26 +76,33 @@ const Login = () => {
             console.log("log", log.data)
 
             if (log.data.ok) {
-                const check = await axios.post(`${pathUrl}/health/hyggelineservice/checkLineid`, {lineid:lineid})
-                if(check.data.ok){
-                    if(check.data.message === 0){
-                        const service = await axios.post(`${pathUrl}/health/hyggelineservice`, dataservice)
-                        console.log("service", service.data)
+                
+                const check = await axios.post(`${pathUrl}/health/hyggelineservice/checkLineid`, { lineid: lineid })
+                console.log("check", check.data)
+                if (check.data.ok) {
 
-                        if (service.data.ok) {
-                            console.log(service.data.message)
-                            router.replace("/profile2" + "/" + Patient?.cid + "/" + lineid + "/agreement")
-                        } else {
-                            throw new Error(service.data.error);
-                        }
-                    }else{
-                        router.replace("/profile2" + "/" + Patient?.cid + "/" + lineid + "/agreement") 
+                    const service = await axios.post(`${pathUrl}/health/hyggelineservice`, dataservice)
+                    console.log("service", service.data)
+
+                    if (service.data.ok) {
+                        console.log(service.data.message)
+                        router.replace("/agreement")
+                        // router.replace("/profile2" + "/" + Patient?.cid + "/" + lineid + "/agreement")
+                    } else {
+                        throw new Error(service.data.error);
                     }
+
+                } else {
+                    throw new Error(check.data.error);
                 }
-               
-            }else{throw new Error(log.data.error)}
+
+            } else { throw new Error(log.data.error) }
+
+
+        } else {
+            throw new Error(resIns.data.error)
         }
-        
+
     };
 
     const onSubmit = async (data: LoginFormValues) => {
@@ -129,7 +137,11 @@ const Login = () => {
                     cid: res.data.message[0].cid,
                     token_line: `${profile.userId}`
                 }
-
+                const dataservice = {
+                    cid: res.data.message[0].cid,
+                    lineid: `${profile.userId}`,
+                    hospcode: 10678,
+                }
                 //update token
                 const resUpdate: any = await axios.put(`${pathUrl}/health/hygge_citizen/updatetoken`, dataSend)
                 console.log("resUpdate", resUpdate.data)
@@ -140,11 +152,9 @@ const Login = () => {
                         updatePatient(res2.data.message[0])
                         updatedata(res2.data.message[0], `${profile.userId}`)
 
-                    } else {
-                        throw new Error(res.data.error);
                     }
                 } else {
-                    throw new Error(res.data.error);
+                    throw new Error(resUpdate.data.error);
                 }
             } else {
                 // ไม่มีข้อมูลใน DB
@@ -180,16 +190,12 @@ const Login = () => {
             <span style={{ fontSize: "9em", marginRight: "10px" }}>
                 <Image
                     priority
-                    src={hygge}
-                    alt="hygge"
-                    width={250}
-
-
+                    src={logo}
+                    alt="logo"
+                    width={145}
                 />
-
-
             </span>
-
+            <p className="mt-5 text-center text-2xl text-white	">โรงพยาบาลราชบุรี</p>
 
             <br></br>
 
@@ -251,7 +257,7 @@ const Login = () => {
                                 <Button
                                     type="submit"
                                     variant="outline"
-                                    className="bg-[#47799A] text-grey drop-shadow-md text-md hover:bg-[#eaefe8] hover:text-grey hover:text-lg"
+                                    className="bg-[#2150C9] text-white drop-shadow-md text-md hover:bg-[#eaefe8] hover:text-grey hover:text-lg"
                                     disabled={isDisble}
 
                                 >
@@ -260,7 +266,17 @@ const Login = () => {
                             </div>
                         </form>
 
+
                     </FormProvider>
+                    <Button
+                        type="submit"
+                        variant="outline"
+                        className="mt-5 bg-[#53AE85] text-white drop-shadow-md text-md hover:bg-[#eaefe8] hover:text-grey hover:text-lg"
+                        disabled={isDisble}
+
+                    >
+                        ลืม Password
+                    </Button>
                 </CardContent>
 
             </Card>

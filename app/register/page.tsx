@@ -7,8 +7,8 @@ import pix from '@/public/pix.png'
 import { useRouter } from "next/navigation";
 
 import backpage from '@/public/back.png'
-
-
+import digital from '@/public/digital.png'
+import footer from "@/public/footer.png"
 function Register() {
     const router = useRouter();
 
@@ -30,17 +30,17 @@ function Register() {
 
                 />
             </div>
-            <div className='bg-[#00AE91]'>
+            <div className='bg-[#006A38]'>
                 <p className='text-[#ffffff] text-center text-2xl p-5'>วิธีการลงทะเบียน</p>
             </div>
 
             <div className='flex justify-center mt-12'>
                 <Image
                     priority
-                    src={hygge_logo}
-                    alt="hygge_logo"
-                    width={160}
-                    height={140}
+                    src={digital}
+                    alt="digital"
+                    width={110}
+                    height={110}
 
                 />
 
@@ -52,7 +52,7 @@ function Register() {
             <div className="-mt-8 p-10 ">
                 <p className='mt-2 '>1. ไปที่จุดบริการของโรงพยาบาล</p>
 
-                <p className='mt-2 '>2. แจ้งความประสงค์  <span className="text-[#F15D4F]">ลงทะเบียนฮุกกะ </span> พร้อมบัตรประชาชน</p>
+                <p className='mt-2 '>2. แจ้งความประสงค์ลงทะเบียน   <span className="text-[#F15D4F]"> "ฮุกกะ" </span> พร้อมบัตรประชาชน</p>
 
                 <p className='mt-2'>3. รับ <span className="text-[#F15D4F]">“รหัสผ่าน”</span> จากเจ้าหน้าที่</p>
 
@@ -62,10 +62,10 @@ function Register() {
             <div className='flex justify-center mt-2'>
                 <Image
                     priority
-                    src={pix}
-                    alt="pix"
+                    src={footer}
+                    alt="footer"
                     // width={140}
-                    height={140}
+                    height={160}
 
                 />
 
