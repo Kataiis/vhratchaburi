@@ -1,0 +1,50 @@
+{
+  "name": "vhratchaburi",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@hookform/resolvers": "^3.3.4",
+    "@line/liff": "^2.23.1",
+    "@mui/material": "^5.15.10",
+    "@radix-ui/react-accordion": "^1.1.2",
+    "@radix-ui/react-checkbox": "^1.0.4",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-toast": "^1.1.5",
+    "axios": "^1.6.5",
+    "class-variance-authority": "^0.7.0",
+    "dayjs": "^1.11.10",
+    "lucide-react": "^0.312.0",
+    "next": "^14.1.1",
+    "react": "^18.2.0",
+    "react-barcode": "^1.4.6",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.49.3",
+    "react-loader-spinner": "^6.1.6",
+    "react-qr-code": "^2.0.12",
+    "react-router-dom": "^6.21.3",
+    "sweetalert2": "^11.10.3",
+    "tailwind-merge": "^2.2.0",
+    "zod": "^3.22.4",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
