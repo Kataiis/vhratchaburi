@@ -70,7 +70,8 @@ const Login = () => {
 
         console.log("dataIns", dataIns)
 
-        const resIns: any = await axios.post(pathUrl + "/health/hiereq/store_hyggeoa", DataTransferItemList);
+        const resIns: any = await axios.post(pathUrl + "/health/hiereq/store_hyggeoa", dataIns);
+        // const resIns: any = await axios.post(pathUrl + "/health/hiereq/store_hyggeoa", DataTransferItemList);
         console.log("resIns", resIns.data)
 
         if (resIns.data.ok) {
@@ -79,24 +80,36 @@ const Login = () => {
             console.log("log", log.data)
 
             if (log.data.ok) {
-                
-                const check = await axios.post(`${pathUrl}/health/hyggelineservice/checkLineid`, { lineid: lineid })
-                console.log("check", check.data)
-                if (check.data.ok) {
+                // ไม่ต้องเช็ค hyggelineservice/checkLineid อีกรอบ 
+                // มาหน้านี้ได้ เพราะไม่มี lineid ใน hygge_line_service แต่แรก
+                const service = await axios.post(`${pathUrl}/health/hyggelineservice`, dataservice)
+                console.log("service", service.data)
 
-                    const service = await axios.post(`${pathUrl}/health/hyggelineservice`, dataservice)
-                    console.log("service", service.data)
-
-                    if (service.data.ok) {
-                        console.log(service.data.message)
-                        router.replace("/agreement")
-                    } else {
-                        throw new Error(service.data.error);
-                    }
-
+                if (service.data.ok) {
+                    console.log(service.data.message)
+                    router.replace("/agreement")
                 } else {
-                    throw new Error(check.data.error);
+                    throw new Error(service.data.error);
                 }
+
+
+                // const check = await axios.post(`${pathUrl}/health/hyggelineservice/checkLineid`, { lineid: lineid })
+                // console.log("check", check.data)
+                // if (check.data.ok) {
+
+                //     const service = await axios.post(`${pathUrl}/health/hyggelineservice`, dataservice)
+                //     console.log("service", service.data)
+
+                //     if (service.data.ok) {
+                //         console.log(service.data.message)
+                //         router.replace("/agreement")
+                //     } else {
+                //         throw new Error(service.data.error);
+                //     }
+
+                // } else {
+                //     throw new Error(check.data.error);
+                // }
 
             } else { throw new Error(log.data.error) }
 
@@ -134,30 +147,33 @@ const Login = () => {
             console.log("message.length : ", res.data.message.length);
 
             if (res.data.message.length > 0) {
+                // ไม่ต้องอัพเดตที่ citizen 
+                const res2 = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`, { cid: res.data.message[0].cid })
+                updatePatient(res2.data.message[0])
+                updatedata(res2.data.message[0], `${profile.userId}`)
 
-                const dataSend = {
-                    cid: res.data.message[0].cid,
-                    token_line: `${profile.userId}`
-                }
-                const dataservice = {
-                    cid: res.data.message[0].cid,
-                    lineid: `${profile.userId}`,
-                    hospcode: 10678,
-                }
-                //update token
-                const resUpdate: any = await axios.put(`${pathUrl}/health/hygge_citizen/updatetoken`, dataSend)
-                console.log("resUpdate", resUpdate.data)
-                console.log("dataSend", dataSend)
-                if (resUpdate.data.ok) {
-                    if (resUpdate.data.message === 1) {
-                        const res2 = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`, { cid: dataSend })
-                        updatePatient(res2.data.message[0])
-                        updatedata(res2.data.message[0], `${profile.userId}`)
 
-                    }
-                } else {
-                    throw new Error(resUpdate.data.error);
-                }
+                // const dataservice = {
+                //     cid: res.data.message[0].cid,
+                //     lineid: `${profile.userId}`,
+                //     hospcode: 10678,
+                // }
+
+              
+                // //update token
+                // const resUpdate: any = await axios.put(`${pathUrl}/health/hygge_citizen/updatetoken`, dataSend)
+                // console.log("resUpdate", resUpdate.data)
+                // console.log("dataSend", dataSend)
+                // if (resUpdate.data.ok) {
+                //     if (resUpdate.data.message === 1) {
+                //         const res2 = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`, { cid: dataSend })
+                //         updatePatient(res2.data.message[0])
+                //         updatedata(res2.data.message[0], `${profile.userId}`)
+
+                //     }
+                // } else {
+                //     throw new Error(resUpdate.data.error);
+                // }
             } else {
                 // ไม่มีข้อมูลใน DB
 
