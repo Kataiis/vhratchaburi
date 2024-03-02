@@ -12,7 +12,7 @@ import {
     FormItem,
     FormMessage,
 } from "@/components/ui/form";
-import { userStore } from "../store";
+import { uselineStore, userStore } from "../store";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
@@ -37,6 +37,8 @@ const Login = () => {
     
     const router = useRouter();
     const updatePatient: any = usePatientStore((state: any) => state.updatePatient);
+    const updateline: any = uselineStore((state: any) => state.updateline);
+
 
     const LoginFormSchema = z.object({
         username: z.string({ required_error: "กรุณาใส่ เลขประจำตัวประชาชน" }),
@@ -70,14 +72,17 @@ const Login = () => {
 
         console.log("dataIns", dataIns)
 
-        const resIns: any = await axios.post(pathUrl + "/health/hiereq/store_hyggeoa", dataIns);
-        // const resIns: any = await axios.post(pathUrl + "/health/hiereq/store_hyggeoa", DataTransferItemList);
+        // const resIns: any = await axios.post(pathUrl + "/health/hiereq/store_hyggeoa", dataIns);
+        const resIns: any = await axios.post(pathUrl + "/health/hiereq/store_hyggeoa", DataTransferItemList);
         console.log("resIns", resIns.data)
 
         if (resIns.data.ok) {
             console.log("insert hie_request success");
             const log = await axios.post(`${pathUrl}/health/phrviewlog/ins`, { cid: Patient.cid, line_id: lineid })
+            updateline(lineid)
+
             console.log("log", log.data)
+            console.log("lineid:", lineid)
 
             if (log.data.ok) {
                 // ไม่ต้องเช็ค hyggelineservice/checkLineid อีกรอบ 
@@ -87,7 +92,7 @@ const Login = () => {
 
                 if (service.data.ok) {
                     console.log(service.data.message)
-                    router.replace("/agreement")
+                    // router.replace("/agreement")
                 } else {
                     throw new Error(service.data.error);
                 }
@@ -150,8 +155,12 @@ const Login = () => {
                 // ไม่ต้องอัพเดตที่ citizen 
                 const res2 = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`, { cid: res.data.message[0].cid })
                 updatePatient(res2.data.message[0])
+                console.log("res2.data.message[0]`",res2.data.message[0])
                 updatedata(res2.data.message[0], `${profile.userId}`)
 
+             
+               
+              
 
                 // const dataservice = {
                 //     cid: res.data.message[0].cid,

@@ -7,6 +7,11 @@ export const usePatientStore = create((set: any) => ({
   updatePatient: (value: any) => set({ patient: value })
 }));
 
+export const uselineStore = create((set: any) => ({
+  linezod: null,
+  updateline: (value: any) => set({ linezod: value })
+}));
+
 export const userStore = create<any>(
   devtools(
     persist(

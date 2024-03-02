@@ -6,7 +6,7 @@ import hygge_logo from '@/public/hygge_logo.png'
 import pix from '@/public/pix.png'
 import { useRouter } from "next/navigation";
 import backpage from '@/public/back.png'
-import { usePatientStore } from "../store";
+import { usePatientStore, uselineStore } from "../store";
 import Swal from "sweetalert2";
 import dayjs from "dayjs";
 import axios from "axios";
@@ -16,18 +16,23 @@ function Agreement() {
     const router = useRouter();
     const pathUrl: any = process.env.pathUrl;
     const Patient: any = usePatientStore((state: any) => state.patient);
+    const updateline: any = uselineStore((state: any) => state.linezod);
 
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [patient, setPatient] = useState<any>([]);
 
+
     const updatedata = async () => {
-        
+
         setIsSubscribed(false);
         const mytimestamp: any = dayjs().format("YYYY-MM-DD HH:mm:ss");
+        console.log("updateline", updateline)
+        const res: any = await axios.post(pathUrl + "/health/hiereq/checkin", { cid: Patient.cid, });
+   
 
-        const res: any = await axios.post(pathUrl + "/health/hiereq/checkin", { cid: Patient.cid,});
         if (res.data.ok) {
             if (res.data.message <= 1) {
+
                 Swal.fire({
                     html:
                         '<div><img src="/health-report.gif" />' +
@@ -37,7 +42,7 @@ function Agreement() {
                     allowOutsideClick: false,
                     showConfirmButton: false,
                 });
-         
+
 
                 const timer = setTimeout(() => {
                     // ทำ sweetaler แจ้งเตือน ว่าทำสำเร็จแล้ว
@@ -47,9 +52,9 @@ function Agreement() {
                         allowOutsideClick: false,
                         showConfirmButton: false,
                         timer: 1000
-                    }).then(() => {                
-
-                          router.replace("https://eager-kings-doubt.loca.lt/profile2/" + Patient?.cid+"/"+Patient.token_line)
+                    }).then(() => {
+                     
+                        router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + updateline.lineid)
                         // router.replace('/profile')
                     });
 
@@ -65,7 +70,8 @@ function Agreement() {
                 //     showConfirmButton: false,
                 //     timer: 2000
                 // });
-                router.replace("https://eager-kings-doubt.loca.lt/profile2/" + Patient?.cid+"/"+Patient.token_line)
+            
+                router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + updateline.lineide)
             }
         }
     };
@@ -84,13 +90,13 @@ function Agreement() {
     useEffect(() => {
 
         const getPatient = async () => {
-            const res: any = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`, 
-            { cid: Patient.cid }).then((v: any) => setPatient(v.data.message[0]));
+            const res: any = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`,
+                { cid: Patient.cid }).then((v: any) => setPatient(v.data.message[0]));
 
         }
         getPatient();
 
-
+       
 
     }, [])
 

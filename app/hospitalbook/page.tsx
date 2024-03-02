@@ -13,12 +13,15 @@ import refresh from '@/public/refresh.png'
 import medicalhistory from '@/public/medical-history.gif'
 import loadingpage from '@/public/loading.png'
 import { error } from "console";
+import { uselineStore } from "../store";
 
 
 const Hospitalbook = () => {
     const router = useRouter();
     const pathUrl: any = process.env.pathUrl;
     const vhratchaburiliff: any = process.env.vhratchaburiliff;
+
+    const updateline: any = uselineStore((state: any) => state.linezod);
 
     const [loading, setloading] = useState(true);
     const [lineId, setLineId] = useState("");
@@ -74,7 +77,7 @@ const Hospitalbook = () => {
                             timer: 1500
                         })
                             .then(async () => {
-                                router.replace("https://eager-kings-doubt.loca.lt/profile2/" + Patient?.cid+"/"+Patient.token_line)
+                                router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid+"/"+updateline)
                             });
                     }, 30000);
                     return () => clearTimeout(timer);
@@ -87,7 +90,7 @@ const Hospitalbook = () => {
                         showConfirmButton: false,
                         timer: 2000
                     });
-                    router.replace("https://eager-kings-doubt.loca.lt/profile2/" + Patient?.cid+"/"+Patient.token_line)
+                    router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid+"/"+updateline)
 
 
                 }
