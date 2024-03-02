@@ -32,6 +32,9 @@ const Login = () => {
     const [lineId, setLineId] = useState("");
     const [profile, setProfile] = useState<any>({});
     const pathUrl: any = process.env.pathUrl;
+    const pathlink: any = process.env.pathUrl;
+
+    
     const router = useRouter();
     const updatePatient: any = usePatientStore((state: any) => state.updatePatient);
 
@@ -87,7 +90,6 @@ const Login = () => {
                     if (service.data.ok) {
                         console.log(service.data.message)
                         router.replace("/agreement")
-                        // router.replace("/profile2" + "/" + Patient?.cid + "/" + lineid + "/agreement")
                     } else {
                         throw new Error(service.data.error);
                     }

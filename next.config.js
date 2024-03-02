@@ -8,6 +8,8 @@ const nextConfig = {
         pathUrl: `https://hyggemedicalservice.com/phpapi/api`,
 
         vhratchaburiliff: '2003826482-JZxe4b0A',
+
+        pathlink: "https://sour-clocks-work.loca.lt/profile2/"
     }
 
 };

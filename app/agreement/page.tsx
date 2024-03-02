@@ -20,12 +20,6 @@ function Agreement() {
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [patient, setPatient] = useState<any>([]);
 
-    
-
-    // const backPage = () => {
-    //     router.replace("../../" + params.cid + "/" + params.lineid);
-    // };
-
     const updatedata = async () => {
         
         setIsSubscribed(false);
@@ -53,8 +47,9 @@ function Agreement() {
                         allowOutsideClick: false,
                         showConfirmButton: false,
                         timer: 1000
-                    }).then(() => {
-                          router.replace('https://modern-wolves-hope.loca.lt/profile2/'+Patient?.cid+"/"+Patient.token_line)
+                    }).then(() => {                
+
+                          router.replace("https://metal-glasses-punch.loca.lt/profile2/" + Patient?.cid+"/"+Patient.token_line)
                         // router.replace('/profile')
                     });
 
@@ -70,7 +65,7 @@ function Agreement() {
                 //     showConfirmButton: false,
                 //     timer: 2000
                 // });
-                router.replace('https://modern-wolves-hope.loca.lt/profile2/'+Patient?.cid+"/"+Patient.token_line)
+                router.replace("https://metal-glasses-punch.loca.lt/profile2/"+Patient?.cid+"/"+Patient.token_line)
             }
         }
     };
@@ -89,8 +84,8 @@ function Agreement() {
     useEffect(() => {
 
         const getPatient = async () => {
-            const res: any = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`, { cid: Patient.cid }).then((v: any) => setPatient(v.data.message[0]));
-
+            const res: any = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`, 
+            { cid: Patient.cid }).then((v: any) => setPatient(v.data.message[0]));
 
         }
         getPatient();
