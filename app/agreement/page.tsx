@@ -49,7 +49,7 @@ function Agreement() {
                         timer: 1000
                     }).then(() => {                
 
-                          router.replace("https://metal-glasses-punch.loca.lt/profile2/" + Patient?.cid+"/"+Patient.token_line)
+                          router.replace("https://eager-kings-doubt.loca.lt/profile2/" + Patient?.cid+"/"+Patient.token_line)
                         // router.replace('/profile')
                     });
 
@@ -65,7 +65,7 @@ function Agreement() {
                 //     showConfirmButton: false,
                 //     timer: 2000
                 // });
-                router.replace("https://metal-glasses-punch.loca.lt/profile2/"+Patient?.cid+"/"+Patient.token_line)
+                router.replace("https://eager-kings-doubt.loca.lt/profile2/" + Patient?.cid+"/"+Patient.token_line)
             }
         }
     };

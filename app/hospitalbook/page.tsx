@@ -74,7 +74,7 @@ const Hospitalbook = () => {
                             timer: 1500
                         })
                             .then(async () => {
-                                router.replace("/profile2" + "/" + Patient?.cid + "/" + lineid)
+                                router.replace("https://eager-kings-doubt.loca.lt/profile2/" + Patient?.cid+"/"+Patient.token_line)
                             });
                     }, 30000);
                     return () => clearTimeout(timer);
@@ -87,7 +87,7 @@ const Hospitalbook = () => {
                         showConfirmButton: false,
                         timer: 2000
                     });
-                    router.replace('https://metal-glasses-punch.loca.lt/profile2/' + Patient?.cid + "/" + Patient.token_line)
+                    router.replace("https://eager-kings-doubt.loca.lt/profile2/" + Patient?.cid+"/"+Patient.token_line)
 
 
                 }
@@ -113,55 +113,80 @@ const Hospitalbook = () => {
                 const checkLineId = await axios.post(`${pathUrl}/health/hyggelineservice/checkLineid`, dataSend)
                 if (checkLineId.data.ok) {
                     if (checkLineId.data.message.length > 0) {
+                    
+                        const value = checkLineId.data.message[0].cid;
+                        // ดึงข้อมูลจาก API
 
+                        const res2 = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`, { cid: value })
+                        console.log("res2.data : ", res2.data);
+                        if (res2.data.ok) {
+                            if (res2.data.message.length != 0) {
+                                const Patient = res2.data.message[0]
+
+                                const log = await axios.post(`${pathUrl}/health/phrviewlog/ins`, { cid: value, line_id: `${profile.userId}` })
+                                console.log("log", log.data)
+                                const mytimestamp: any = dayjs().format("YYYY-MM-DD HH:mm:ss");
+
+                                if (log.data.ok) {
+                                    updatedata(Patient, `${profile.userId}`)
+                                } else {
+                                    throw new Error(log.data.error);
+                                }
+
+
+                            } else {
+                                throw new Error(res2.data.error);
+                            }
+                        }
 
                     } else { router.replace("/login"); }
                 } else { throw new Error(checkLineId.data.error); }
 
 
 
-                // console.info(checkLineId.data);
-                // console.log("checkLineId", checkLineId.data)
+                console.info(checkLineId.data);
+                console.log("checkLineId", checkLineId.data)
 
-                // if (checkLineId.data.ok) {
-                //     if (checkLineId.data.message.length > 0) {
-                //         console.log("cid : ", checkLineId.data.message[0].cid);
-                //         setCheckuser(true);
-                //         setUser(checkLineId.data[0]);
-                //         console.log(checkLineId);
-                //         const value = checkLineId.data.message[0].cid;
-                //         // ดึงข้อมูลจาก API
-                //         const res2 = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`, { cid: value })
-                //         console.log("res2.data : ", res2.data);
-                //         if (res2.data.ok) {
-                //             if (res2.data.message.length != 0) {
-                //                 // updatePatient(res2.data.message[0])
-                //                 const Patient = res2.data.message[0]
+                if (checkLineId.data.ok) {
+                    if (checkLineId.data.message.length > 0) {
+                        console.log("cid : ", checkLineId.data.message[0].cid);
+                        setCheckuser(true);
+                        setUser(checkLineId.data[0]);
+                        console.log(checkLineId);
+                        const value = checkLineId.data.message[0].cid;
+                        // ดึงข้อมูลจาก API
 
-                //                 const log = await axios.post(`${pathUrl}/health/phrviewlog/ins`, { cid: value, line_id: `${profile.userId}` })
-                //                 console.log("log", log.data)
-                //                 const mytimestamp: any = dayjs().format("YYYY-MM-DD HH:mm:ss");
+                        const res2 = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`, { cid: value })
+                        console.log("res2.data : ", res2.data);
+                        if (res2.data.ok) {
+                            if (res2.data.message.length != 0) {
+                                const Patient = res2.data.message[0]
 
-                //                 if (log.data.ok) {
-                //                     updatedata(Patient, `${profile.userId}`)
-                //                 } else {
-                //                     throw new Error(log.data.error);
-                //                 }
+                                const log = await axios.post(`${pathUrl}/health/phrviewlog/ins`, { cid: value, line_id: `${profile.userId}` })
+                                console.log("log", log.data)
+                                const mytimestamp: any = dayjs().format("YYYY-MM-DD HH:mm:ss");
 
-
-                //             } else {
-                //                 throw new Error(res2.data.error);
-                //             }
-                //         }
-                //     } else {
-                //         router.replace("/login");
-                //     }
+                                if (log.data.ok) {
+                                    updatedata(Patient, `${profile.userId}`)
+                                } else {
+                                    throw new Error(log.data.error);
+                                }
 
 
-                // } else {
+                            } else {
+                                throw new Error(res2.data.error);
+                            }
+                        }
+                        
+                    } else {
+                        router.replace("/login");
+                    }
 
-                //     throw new Error(checkLineId.data.error);
-                // }
+
+                } else {
+
+                    throw new Error(checkLineId.data.error);
+                }
             }
 
         });
