@@ -94,7 +94,7 @@ const Login = () => {
 
                 if (service.data.ok) {
                     console.log(service.data.message)
-                    // router.replace("/agreement")
+                    router.replace("/agreement")
                 } else {
                     throw new Error(service.data.error);
                 }

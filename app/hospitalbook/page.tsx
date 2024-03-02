@@ -20,8 +20,10 @@ const Hospitalbook = () => {
     const router = useRouter();
     const pathUrl: any = process.env.pathUrl;
     const vhratchaburiliff: any = process.env.vhratchaburiliff;
+    // const updateline: any = uselineStore((state: any) => state.linezod);
 
-    const updateline: any = uselineStore((state: any) => state.linezod);
+    const lineID: any = uselineStore((state: any) => state.linezod);
+
 
     const [loading, setloading] = useState(true);
     const [lineId, setLineId] = useState("");
@@ -37,6 +39,8 @@ const Hospitalbook = () => {
 
 
     const updatedata = async (Patient: any, lineid: any) => {
+        console.log("lineID", lineID)
+
         const mytimestamp: any = dayjs().format("YYYY-MM-DD HH:mm:ss");
         const dataIns = {
             req_cid: Patient?.cid,
@@ -77,7 +81,7 @@ const Hospitalbook = () => {
                             timer: 1500
                         })
                             .then(async () => {
-                                router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid+"/"+updateline)
+                                router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + lineid)
                             });
                     }, 30000);
                     return () => clearTimeout(timer);
@@ -90,8 +94,7 @@ const Hospitalbook = () => {
                         showConfirmButton: false,
                         timer: 2000
                     });
-                    router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid+"/"+updateline)
-
+                    router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + lineid)
 
                 }
             }
@@ -116,7 +119,7 @@ const Hospitalbook = () => {
                 const checkLineId = await axios.post(`${pathUrl}/health/hyggelineservice/checkLineid`, dataSend)
                 if (checkLineId.data.ok) {
                     if (checkLineId.data.message.length > 0) {
-                    
+
                         const value = checkLineId.data.message[0].cid;
                         // ดึงข้อมูลจาก API
 
@@ -180,7 +183,7 @@ const Hospitalbook = () => {
                                 throw new Error(res2.data.error);
                             }
                         }
-                        
+
                     } else {
                         router.replace("/login");
                     }
