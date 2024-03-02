@@ -16,7 +16,8 @@ function Agreement() {
     const router = useRouter();
     const pathUrl: any = process.env.pathUrl;
     const Patient: any = usePatientStore((state: any) => state.patient);
-    const updateline: any = uselineStore((state: any) => state.linezod);
+    // const updateline: any = uselineStore((state: any) => state.linezod);
+    const lineID: any = uselineStore((state: any) => state.linezod);
 
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [patient, setPatient] = useState<any>([]);
@@ -26,7 +27,7 @@ function Agreement() {
 
         setIsSubscribed(false);
         const mytimestamp: any = dayjs().format("YYYY-MM-DD HH:mm:ss");
-        console.log("updateline", updateline)
+        console.log("lineID", lineID)
         const res: any = await axios.post(pathUrl + "/health/hiereq/checkin", { cid: Patient.cid, });
    
 
@@ -54,7 +55,8 @@ function Agreement() {
                         timer: 1000
                     }).then(() => {
                      
-                        router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + updateline.lineid)
+                        // router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + updateline.lineid)
+                        router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
                         // router.replace('/profile')
                     });
 
@@ -71,7 +73,7 @@ function Agreement() {
                 //     timer: 2000
                 // });
             
-                router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + updateline.lineide)
+                router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
             }
         }
     };
@@ -88,16 +90,12 @@ function Agreement() {
 
 
     useEffect(() => {
-
+        
         const getPatient = async () => {
             const res: any = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`,
                 { cid: Patient.cid }).then((v: any) => setPatient(v.data.message[0]));
-
         }
         getPatient();
-
-       
-
     }, [])
 
 

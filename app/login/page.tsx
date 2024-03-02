@@ -38,6 +38,7 @@ const Login = () => {
     const router = useRouter();
     const updatePatient: any = usePatientStore((state: any) => state.updatePatient);
     const updateline: any = uselineStore((state: any) => state.updateline);
+    const lineid: any = uselineStore((state: any) => state.updateline);
 
 
     const LoginFormSchema = z.object({
@@ -57,6 +58,7 @@ const Login = () => {
 
 
     const updatedata = async (Patient: any, lineid: any) => {
+        
         // hygge oa  insert request
         const dataIns = {
             req_cid: Patient.cid,
@@ -79,7 +81,7 @@ const Login = () => {
         if (resIns.data.ok) {
             console.log("insert hie_request success");
             const log = await axios.post(`${pathUrl}/health/phrviewlog/ins`, { cid: Patient.cid, line_id: lineid })
-            updateline(lineid)
+            
 
             console.log("log", log.data)
             console.log("lineid:", lineid)
@@ -133,6 +135,7 @@ const Login = () => {
         console.log(profile);
         setProfile(profile)
         setLineId(profile?.userId);
+        updateline(profile?.userId)
 
         console.warn(lineId);
 
