@@ -28,7 +28,7 @@ function Agreement() {
         setIsSubscribed(false);
         const mytimestamp: any = dayjs().format("YYYY-MM-DD HH:mm:ss");
         console.log("lineID", lineID)
-        const res: any = await axios.post(pathUrl + "/health/hiereq/checkin", { cid: Patient.cid, });
+        const res: any = await axios.post(pathUrl + "/health/hiereq/checkin", { cid: Patient?.cid, });
    
 
         if (res.data.ok) {
@@ -44,6 +44,11 @@ function Agreement() {
                     showConfirmButton: false,
                 });
 
+                const text = "REQUEST|" + Patient.favhos1 + "|" + Patient?.cid + "|" + mytimestamp
+                console.log("text", text)
+                // //ไม่เคยมีการ request วันนี้
+
+                const sentmqtt = await axios.post(`https://hyggemedicalservice.com/apirbh/connectmqtt/hyggeoa`, { messagemqtt: text })
 
                 const timer = setTimeout(() => {
                     // ทำ sweetaler แจ้งเตือน ว่าทำสำเร็จแล้ว
@@ -56,7 +61,7 @@ function Agreement() {
                     }).then(() => {
                      
                         // router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + updateline.lineid)
-                        router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
+                        router.replace("https://lucky-donkeys-doubt.loca.lt//profile2/" + Patient?.cid + "/" + lineID)
                         // router.replace('/profile')
                     });
 
@@ -73,7 +78,7 @@ function Agreement() {
                 //     timer: 2000
                 // });
             
-                router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
+                router.replace("https://lucky-donkeys-doubt.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
             }
         }
     };

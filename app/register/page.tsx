@@ -52,7 +52,7 @@ function Register() {
             <div className="-mt-8 p-10 ">
                 <p className='mt-2 '>1. ไปที่จุดบริการของโรงพยาบาล</p>
 
-                <p className='mt-2 '>2. แจ้งความประสงค์ลงทะเบียน   <span className="text-[#F15D4F]"> "ฮุกกะ" </span> พร้อมบัตรประชาชน</p>
+                <p className='mt-2 '>2. แจ้งความประสงค์ลงทะเบียน   <span className="text-[#F15D4F]"> “ฮุกกะ”</span> พร้อมบัตรประชาชน</p>
 
                 <p className='mt-2'>3. รับ <span className="text-[#F15D4F]">“รหัสผ่าน”</span> จากเจ้าหน้าที่</p>
 

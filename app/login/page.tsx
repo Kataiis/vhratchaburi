@@ -34,7 +34,7 @@ const Login = () => {
     const pathUrl: any = process.env.pathUrl;
     const pathlink: any = process.env.pathUrl;
 
-    
+
     const router = useRouter();
     const updatePatient: any = usePatientStore((state: any) => state.updatePatient);
     const updateline: any = uselineStore((state: any) => state.updateline);
@@ -58,7 +58,7 @@ const Login = () => {
 
 
     const updatedata = async (Patient: any, lineid: any) => {
-        
+
         // hygge oa  insert request
         const dataIns = {
             req_cid: Patient.cid,
@@ -69,7 +69,7 @@ const Login = () => {
         const dataservice = {
             cid: Patient.cid,
             lineid: lineid,
-            hospcode: 10678,
+            hospcode: 10677,
         }
 
         console.log("dataIns", dataIns)
@@ -81,7 +81,7 @@ const Login = () => {
         if (resIns.data.ok) {
             console.log("insert hie_request success");
             const log = await axios.post(`${pathUrl}/health/phrviewlog/ins`, { cid: Patient.cid, line_id: lineid })
-            
+
 
             console.log("log", log.data)
             console.log("lineid:", lineid)
@@ -158,12 +158,12 @@ const Login = () => {
                 // ไม่ต้องอัพเดตที่ citizen 
                 const res2 = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`, { cid: res.data.message[0].cid })
                 updatePatient(res2.data.message[0])
-                console.log("res2.data.message[0]`",res2.data.message[0])
+                console.log("res2.data.message[0]`", res2.data.message[0])
                 updatedata(res2.data.message[0], `${profile.userId}`)
 
-             
-               
-              
+
+
+
 
                 // const dataservice = {
                 //     cid: res.data.message[0].cid,
@@ -171,7 +171,7 @@ const Login = () => {
                 //     hospcode: 10678,
                 // }
 
-              
+
                 // //update token
                 // const resUpdate: any = await axios.put(`${pathUrl}/health/hygge_citizen/updatetoken`, dataSend)
                 // console.log("resUpdate", resUpdate.data)
