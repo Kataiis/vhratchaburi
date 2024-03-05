@@ -61,7 +61,7 @@ function Agreement() {
                     }).then(() => {
                      
                         // router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + updateline.lineid)
-                        router.replace("https://lucky-donkeys-doubt.loca.lt//profile2/" + Patient?.cid + "/" + lineID)
+                        router.replace("https://small-areas-yawn.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
                         // router.replace('/profile')
                     });
 
@@ -78,7 +78,7 @@ function Agreement() {
                 //     timer: 2000
                 // });
             
-                router.replace("https://lucky-donkeys-doubt.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
+                router.replace("https://small-areas-yawn.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
             }
         }
     };

@@ -12,14 +12,13 @@ import Image from 'next/image'
 import refresh from '@/public/refresh.png'
 import medicalhistory from '@/public/medical-history.gif'
 import loadingpage from '@/public/loading.png'
-import { error } from "console";
 import { uselineStore } from "../store";
 
 
 const Hospitalbook = () => {
     const router = useRouter();
     const pathUrl: any = process.env.pathUrl;
-    const vhratchaburiliff: any = process.env.vhratchaburiliff;
+    const vhprovincialliff: any = process.env.vhprovincialliff;
     // const updateline: any = uselineStore((state: any) => state.linezod);
 
     const lineID: any = uselineStore((state: any) => state.linezod);
@@ -81,7 +80,7 @@ const Hospitalbook = () => {
                             timer: 1500
                         })
                             .then(async () => {
-                                router.replace("https://lucky-donkeys-doubt.loca.lt/profile2/" + Patient?.cid + "/" + lineid)
+                                router.replace("https://small-areas-yawn.loca.lt/profile2/" + Patient?.cid + "/" + lineid)
                             });
                     }, 30000);
                     return () => clearTimeout(timer);
@@ -94,7 +93,7 @@ const Hospitalbook = () => {
                         showConfirmButton: false,
                         timer: 2000
                     });
-                    router.replace("https://lucky-donkeys-doubt.loca.lt/profile2/" + Patient?.cid + "/" + lineid)
+                    router.replace("https://small-areas-yawn.loca.lt/profile2/" + Patient?.cid + "/" + lineid)
 
                 }
             }
@@ -104,7 +103,7 @@ const Hospitalbook = () => {
     const initLiff = async () => {
         liff.use(new GetOS());
         setOs(liff.getOS());
-        await liff.init({ liffId: vhratchaburiliff }).then(async () => {
+        await liff.init({ liffId: vhprovincialliff }).then(async () => {
             if (!liff.isLoggedIn()) {
                 liff.login();
             } else {
