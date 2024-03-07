@@ -23,7 +23,7 @@ import liff from "@line/liff"
 import { usePatientStore } from "../store";
 import dayjs from "dayjs";
 
-import logo from '@/public/Logo.png'
+import logo from '@/public/hyggelogo.png'
 
 
 const Login = () => {
@@ -32,6 +32,7 @@ const Login = () => {
     const [lineId, setLineId] = useState("");
     const [profile, setProfile] = useState<any>({});
     const pathUrl: any = process.env.pathUrl;
+
     const router = useRouter();
     const updatePatient: any = usePatientStore((state: any) => state.updatePatient);
     const updateline: any = uselineStore((state: any) => state.updateline);
@@ -66,7 +67,7 @@ const Login = () => {
         const dataservice = {
             cid: Patient.cid,
             lineid: lineid,
-            hospcode: 10677,
+            hospcode: "RP001",
         }
 
         console.log("dataIns", dataIns)
@@ -203,14 +204,14 @@ const Login = () => {
     };
 
     return (
-        <div className="mb-5"
+        <div className=""
             style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
                 height: "100vh",
-                background: "#00AE91",
+                background: "#1D4C60",
 
             }}
         >
@@ -219,11 +220,11 @@ const Login = () => {
                     priority
                     src={logo}
                     alt="logo"
-                    width={145}
+                    width={65}
                 />
             </span>
-            <p className="mt-5 text-center text-2xl text-white	">โรงพยาบาลราชบุรี</p>
-
+            <p className="mt-5 text-center text-3xl text-white	">หน่วยบริการสุขภาพ</p>
+            <p className="mt-1 text-center text-lg text-white	">องค์การบริหารส่วนจังหวัดฮุกกะ</p>
             <br></br>
 
             <Card className=" rounded-2xl ">
@@ -243,7 +244,7 @@ const Login = () => {
                                     name="username"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <div className="flex flex-col space-y-1.5 mb-5 ">
+                                            <div className="flex flex-col space-y-1.5 mb-1 ">
                                                 <FormControl>
                                                     <Input
                                                         inputMode="numeric"
@@ -315,7 +316,7 @@ const Login = () => {
                 <Button
                     type="submit"
                     variant="outline"
-                    className="bg-[#00AE91] text-white drop-shadow-lg text-md  hover:bg-[#eaefe8] hover:text-grey hover:text-lg  "
+                    className="bg-[#006A38] text-white drop-shadow-lg text-md  hover:bg-[#eaefe8] hover:text-grey hover:text-lg  "
                     onClick={() => router.replace('/register')}
 
                 >
@@ -323,6 +324,7 @@ const Login = () => {
                 </Button>
             </div>
         </div>
+
     );
 };
 export default Login;
