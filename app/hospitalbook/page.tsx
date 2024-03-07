@@ -18,7 +18,7 @@ import { uselineStore } from "../store";
 const Hospitalbook = () => {
     const router = useRouter();
     const pathUrl: any = process.env.pathUrl;
-    const vhprovincialliff: any = process.env.vhprovincialliff;
+    const vhratchaburiliff: any = process.env.vhratchaburiliff;
     // const updateline: any = uselineStore((state: any) => state.linezod);
 
     const lineID: any = uselineStore((state: any) => state.linezod);
@@ -103,7 +103,7 @@ const Hospitalbook = () => {
     const initLiff = async () => {
         liff.use(new GetOS());
         setOs(liff.getOS());
-        await liff.init({ liffId: vhprovincialliff }).then(async () => {
+        await liff.init({ liffId: vhratchaburiliff }).then(async () => {
             if (!liff.isLoggedIn()) {
                 liff.login();
             } else {
