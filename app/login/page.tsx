@@ -32,9 +32,6 @@ const Login = () => {
     const [lineId, setLineId] = useState("");
     const [profile, setProfile] = useState<any>({});
     const pathUrl: any = process.env.pathUrl;
-    const pathlink: any = process.env.pathUrl;
-
-
     const router = useRouter();
     const updatePatient: any = usePatientStore((state: any) => state.updatePatient);
     const updateline: any = uselineStore((state: any) => state.updateline);
@@ -287,7 +284,7 @@ const Login = () => {
                                 <Button
                                     type="submit"
                                     variant="outline"
-                                    className="bg-[#2150C9] text-white drop-shadow-md text-md hover:bg-[#eaefe8] hover:text-grey hover:text-lg"
+                                    className="bg-[#2150C9] text-white drop-shadow-md text-md hover:bg-[#eaefe8] hover:text-grey hover:text-lg h-[45px] w-[250px]"
                                     disabled={isDisble}
 
                                 >
@@ -298,17 +295,21 @@ const Login = () => {
 
 
                     </FormProvider>
+
+                </CardContent>
+                <div className="flex justify-center mb-5">
                     <Button
                         type="submit"
                         variant="outline"
-                        className="mt-5 bg-[#53AE85] text-white drop-shadow-md text-md hover:bg-[#eaefe8] hover:text-grey hover:text-lg"
+                        className="bg-[#53AE85] text-grey drop-shadow-md text-md hover:bg-[#eaefe8] hover:text-grey hover:text-lg text-[#ffffff] h-[45px] w-[250px]"
                         disabled={isDisble}
+                        onClick={() => router.replace('/comingsoon')}
+
 
                     >
-                        ลืม Password
+                        ลืม password
                     </Button>
-                </CardContent>
-
+                </div>
             </Card>
             <div className="mt-10">
                 <Button
@@ -320,7 +321,8 @@ const Login = () => {
                 >
                     วิธีการลงทะเบียน ขอรหัสผ่าน
                 </Button>
-            </div></div>
+            </div>
+        </div>
     );
 };
 export default Login;

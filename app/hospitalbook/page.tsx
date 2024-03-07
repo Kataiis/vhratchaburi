@@ -81,7 +81,7 @@ const Hospitalbook = () => {
                             timer: 1500
                         })
                             .then(async () => {
-                                router.replace("https://lucky-donkeys-doubt.loca.lt/profile2/" + Patient?.cid + "/" + lineid)
+                                router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineid)
                             });
                     }, 30000);
                     return () => clearTimeout(timer);
@@ -94,7 +94,7 @@ const Hospitalbook = () => {
                         showConfirmButton: false,
                         timer: 2000
                     });
-                    router.replace("https://lucky-donkeys-doubt.loca.lt/profile2/" + Patient?.cid + "/" + lineid)
+                    router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineid)
 
                 }
             }

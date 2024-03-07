@@ -61,7 +61,7 @@ function Agreement() {
                     }).then(() => {
                      
                         // router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + updateline.lineid)
-                        router.replace("https://lucky-donkeys-doubt.loca.lt//profile2/" + Patient?.cid + "/" + lineID)
+                        router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
                         // router.replace('/profile')
                     });
 
@@ -78,7 +78,7 @@ function Agreement() {
                 //     timer: 2000
                 // });
             
-                router.replace("https://lucky-donkeys-doubt.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
+                router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
             }
         }
     };
@@ -156,9 +156,9 @@ function Agreement() {
 
                 <br />
                 <Button disabled={!isSubscribed}
-                    className="bg-[#00AE91] text-[#ffffff] border border-[#ffffff] 
+                    className="bg-[#2150C9] text-[#ffffff] border border-[#ffffff] 
                     text-xl h-[58px] w-[178px] rounded-lg shadow-md shadow-gray-500/100  hover:bg-[#eaefe8] disabled:bg-gray-500 disabled:text-[#ffffff]
-                      hover:text-[#00AE91] hover:text-xl mt-5"
+                      hover:text-[#2150C9] hover:text-xl mt-5"
                     type="submit"
                     onClick={() => updatedata()}> ตกลง </Button>
 
