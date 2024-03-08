@@ -72,8 +72,8 @@ const Login = () => {
 
         console.log("dataIns", dataIns)
 
-        // const resIns: any = await axios.post(pathUrl + "/health/hiereq/store_hyggeoa", dataIns);
-        const resIns: any = await axios.post(pathUrl + "/health/hiereq/store_hyggeoa", DataTransferItemList);
+        const resIns: any = await axios.post(pathUrl + "/health/hiereq/store_hyggeoa", dataIns);
+        // const resIns: any = await axios.post(pathUrl + "/health/hiereq/store_hyggeoa", DataTransferItemList);
         console.log("resIns", resIns.data)
 
         if (resIns.data.ok) {
