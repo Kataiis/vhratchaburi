@@ -80,8 +80,7 @@ const Hospitalbook = () => {
                             timer: 1500
                         })
                             .then(async () => {
-                                // router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineid)
-                                router.replace("https://621e-122-154-73-45.ngrok-free.app/profile2/" + Patient?.cid + "/" + lineid)
+                                router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineid)
 
                             });
                     }, 30000);
@@ -95,8 +94,7 @@ const Hospitalbook = () => {
                         showConfirmButton: false,
                         timer: 2000
                     });
-                    // router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineid)
-                    router.replace("https://621e-122-154-73-45.ngrok-free.app/profile2/" + Patient?.cid + "/" + lineid)
+                    router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineid)
 
 
                 }

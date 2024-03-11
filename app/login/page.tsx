@@ -23,7 +23,7 @@ import liff from "@line/liff"
 import { usePatientStore } from "../store";
 import dayjs from "dayjs";
 
-import logo from '@/public/hyggelogo.png'
+import logo from '@/public/Logo.png'
 
 
 const Login = () => {
@@ -67,7 +67,7 @@ const Login = () => {
         const dataservice = {
             cid: Patient.cid,
             lineid: lineid,
-            hospcode: "RP001",
+            hospcode: "10677",
         }
 
         console.log("dataIns", dataIns)
@@ -97,24 +97,6 @@ const Login = () => {
                     throw new Error(service.data.error);
                 }
 
-
-                // const check = await axios.post(`${pathUrl}/health/hyggelineservice/checkLineid`, { lineid: lineid })
-                // console.log("check", check.data)
-                // if (check.data.ok) {
-
-                //     const service = await axios.post(`${pathUrl}/health/hyggelineservice`, dataservice)
-                //     console.log("service", service.data)
-
-                //     if (service.data.ok) {
-                //         console.log(service.data.message)
-                //         router.replace("/agreement")
-                //     } else {
-                //         throw new Error(service.data.error);
-                //     }
-
-                // } else {
-                //     throw new Error(check.data.error);
-                // }
 
             } else { throw new Error(log.data.error) }
 
@@ -160,30 +142,6 @@ const Login = () => {
                 updatedata(res2.data.message[0], `${profile.userId}`)
 
 
-
-
-
-                // const dataservice = {
-                //     cid: res.data.message[0].cid,
-                //     lineid: `${profile.userId}`,
-                //     hospcode: 10678,
-                // }
-
-
-                // //update token
-                // const resUpdate: any = await axios.put(`${pathUrl}/health/hygge_citizen/updatetoken`, dataSend)
-                // console.log("resUpdate", resUpdate.data)
-                // console.log("dataSend", dataSend)
-                // if (resUpdate.data.ok) {
-                //     if (resUpdate.data.message === 1) {
-                //         const res2 = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`, { cid: dataSend })
-                //         updatePatient(res2.data.message[0])
-                //         updatedata(res2.data.message[0], `${profile.userId}`)
-
-                //     }
-                // } else {
-                //     throw new Error(resUpdate.data.error);
-                // }
             } else {
                 // ไม่มีข้อมูลใน DB
 
@@ -211,7 +169,7 @@ const Login = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 height: "100vh",
-                background: "#1D4C60",
+                background: "#00AE91",
 
             }}
         >
@@ -220,11 +178,10 @@ const Login = () => {
                     priority
                     src={logo}
                     alt="logo"
-                    width={65}
+                    width={80}
                 />
             </span>
-            <p className="mt-5 text-center text-3xl text-white	">หน่วยบริการสุขภาพ</p>
-            <p className="mt-1 text-center text-lg text-white	">องค์การบริหารส่วนจังหวัดฮุกกะ</p>
+            <p className="mt-5 text-center text-3xl text-white	">โรงพยาบาลราชบุรี</p>
             <br></br>
 
             <Card className=" rounded-2xl ">

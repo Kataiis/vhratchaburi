@@ -29,7 +29,7 @@ function Agreement() {
         const mytimestamp: any = dayjs().format("YYYY-MM-DD HH:mm:ss");
         console.log("lineID", lineID)
         const res: any = await axios.post(pathUrl + "/health/hiereq/checkin", { cid: Patient?.cid, });
-   
+
 
         if (res.data.ok) {
             if (res.data.message <= 1) {
@@ -59,11 +59,9 @@ function Agreement() {
                         showConfirmButton: false,
                         timer: 1000
                     }).then(() => {
-                     
-                        // router.replace("https://dry-paws-film.loca.lt/profile2/" + Patient?.cid + "/" + updateline.lineid)
-                        // router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
-                        // router.replace('/profile')
-                        router.replace("https://621e-122-154-73-45.ngrok-free.app/profile2/" + Patient?.cid + "/" + lineID)
+
+
+                        router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
 
                     });
 
@@ -79,11 +77,10 @@ function Agreement() {
                 //     showConfirmButton: false,
                 //     timer: 2000
                 // });
-            
-                // router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
-                router.replace("https://621e-122-154-73-45.ngrok-free.app/profile2/" + Patient?.cid + "/" + lineID)
 
-                
+                router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
+
+
             }
         }
     };
@@ -100,7 +97,7 @@ function Agreement() {
 
 
     useEffect(() => {
-        
+
         const getPatient = async () => {
             const res: any = await axios.post(`${pathUrl}/health/hygge_citizen/bycid`,
                 { cid: Patient.cid }).then((v: any) => setPatient(v.data.message[0]));
