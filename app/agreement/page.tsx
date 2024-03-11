@@ -61,7 +61,8 @@ function Agreement() {
                     }).then(() => {
 
 
-                        router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
+                        // router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
+                        router.replace("https://990c-122-154-73-45.ngrok-free.app/profile2/" + Patient?.cid + "/" + lineID)
 
                     });
 
@@ -78,7 +79,8 @@ function Agreement() {
                 //     timer: 2000
                 // });
 
-                router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
+                // router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
+                router.replace("https://990c-122-154-73-45.ngrok-free.app/profile2/" + Patient?.cid + "/" + lineID)
 
 
             }
