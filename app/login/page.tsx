@@ -173,12 +173,12 @@ const Login = () => {
             }}
         >
             <span style={{ fontSize: "9em", marginRight: "10px" }}>
-                <Image
+                {/* <Image
                     priority
                     src="/vhratchaburi/Logo.png"
                     alt="logo"
                     width={80}
-                />
+                /> */}
             </span>
             <p className="mt-5 text-center text-3xl text-white	">โรงพยาบาลราชบุรี</p>
             <br></br>

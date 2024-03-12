@@ -22,6 +22,7 @@ function Register() {
             <div className="absolute left-10 top-6 h-16 w-16 z-0 ">
                 <Image
                     priority
+                    // src={backpage}
                     src="/vhratchaburi/back.png"
                     alt="backpage"
                     height={25}
@@ -37,6 +38,7 @@ function Register() {
             <div className='flex justify-center mt-12'>
                 <Image
                     priority
+                    // src={digital}
                     src="/vhratchaburi/digital.png"
                     alt="digital"
                     width={110}
@@ -63,9 +65,10 @@ function Register() {
                 <Image
                     priority
                     src="/vhratchaburi/footer.png"
+                    // src={footer}
                     alt="footer"
                     // width={140}
-                    height={160}
+                    height={140}
 
                 />
 

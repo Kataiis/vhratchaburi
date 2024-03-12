@@ -2,8 +2,8 @@
 const nextConfig = {
     reactStrictMode: false,
     trailingSlash: true,
-    output: 'export',
-    basePath: '/vhratchaburi',
+    // output: 'export',
+    // basePath: '/vhratchaburi',
     images: {
         domains: ['profile.line-scdn.net'],
         unoptimized: true,

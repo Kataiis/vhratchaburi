@@ -112,15 +112,15 @@ function Agreement() {
 
         <div>
             <div className="absolute left-8 top-5 h-16 w-16 z-0 ">
-                {/* <Image
+                <Image
                     priority
                     src={backpage}
                     alt="scan"
                     height={25}
-                    onClick={backPage}
-                /> */}
+                    // onClick={backPage}
+                />
             </div>
-            <div className='flex justify-center mt-12'>
+            {/* <div className='flex justify-center mt-12'>
                 <Image
                     priority
                     src="/vhratchaburi/digital.png"
@@ -130,7 +130,7 @@ function Agreement() {
 
                 />
 
-            </div>
+            </div> */}
             <div className="-mt-12 p-10 text-center">
                 <p className=" text-md mt-10 font-semibold ">ข้อตกลงให้ความยินยอม</p>
                 <p className=''>เพื่อเปิดเผยข้อมูลด้านสุขภาพของบุคคลทางอิเล็กทรอนิกส์</p>
