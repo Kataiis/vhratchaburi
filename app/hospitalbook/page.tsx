@@ -80,8 +80,8 @@ const Hospitalbook = () => {
                             timer: 1500
                         })
                             .then(async () => {
-                                // router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineid)
-                                router.replace("https://open-beers-do.loca.lt/profile2/" + Patient?.cid + "/" + lineid)
+                                router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineid)
+                                // router.replace("https://open-beers-do.loca.lt/profile2/" + Patient?.cid + "/" + lineid)
 
 
                             });
@@ -96,8 +96,8 @@ const Hospitalbook = () => {
                         showConfirmButton: false,
                         timer: 2000
                     });
-                    // router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineid)
-                    router.replace("https://open-beers-do.loca.lt/profile2/" + Patient?.cid + "/" + lineid)
+                    router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineid)
+                    // router.replace("https://open-beers-do.loca.lt/profile2/" + Patient?.cid + "/" + lineid)
 
 
                 }

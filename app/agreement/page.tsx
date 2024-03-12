@@ -61,8 +61,8 @@ function Agreement() {
                     }).then(() => {
 
 
-                        // router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
-                        router.replace("https://open-beers-do.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
+                        router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
+                        // router.replace("https://open-beers-do.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
 
                     });
 
@@ -79,8 +79,8 @@ function Agreement() {
                 //     timer: 2000
                 // });
 
-                // router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
-                router.replace("https://open-beers-do.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
+                router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
+                // router.replace("https://open-beers-do.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
 
 
             }
