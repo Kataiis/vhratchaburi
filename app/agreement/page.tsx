@@ -36,7 +36,7 @@ function Agreement() {
 
                 Swal.fire({
                     html:
-                        '<div><img src="/health-report.gif" />' +
+                        '<div><img src="/vhratchaburi/health-report.gif" />' +
                         '<p style="font-size: 16px; margin-top: 10px">กำลังดึงข้อมูลจากโรงพยาบาล</p>' +
                         '<p style="font-size: 18px; margin-top: 10px">กรุณารอประมาณ 30 วินาที</p>' +
                         '</div>',
@@ -62,7 +62,7 @@ function Agreement() {
 
 
                         // router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
-                        router.replace("https://990c-122-154-73-45.ngrok-free.app/profile2/" + Patient?.cid + "/" + lineID)
+                        router.replace("https://open-beers-do.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
 
                     });
 
@@ -80,7 +80,7 @@ function Agreement() {
                 // });
 
                 // router.replace("https://hyggeoa.hyggecode.com/profile2/" + Patient?.cid + "/" + lineID)
-                router.replace("https://990c-122-154-73-45.ngrok-free.app/profile2/" + Patient?.cid + "/" + lineID)
+                router.replace("https://open-beers-do.loca.lt/profile2/" + Patient?.cid + "/" + lineID)
 
 
             }
@@ -123,7 +123,7 @@ function Agreement() {
             <div className='flex justify-center mt-12'>
                 <Image
                     priority
-                    src={digital}
+                    src="/vhratchaburi/digital.png"
                     alt="digital"
                     width={100}
                     height={100}
